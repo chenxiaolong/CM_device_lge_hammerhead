@@ -20,6 +20,9 @@
 # Everything in this directory will become public
 
 PRODUCT_COPY_FILES += \
+    device/lge/hammerhead/init.multiboot.mounting.sh:root/init.multiboot.mounting.sh \
+
+PRODUCT_COPY_FILES += \
     device/lge/hammerhead/init.hammerhead.rc:root/init.hammerhead.rc \
     device/lge/hammerhead/init.hammerhead.usb.rc:root/init.hammerhead.usb.rc \
     device/lge/hammerhead/fstab.hammerhead:root/fstab.hammerhead \
