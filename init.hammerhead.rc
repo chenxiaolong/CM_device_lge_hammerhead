@@ -46,7 +46,6 @@ on init
 
 on fs
     mount_all ./fstab.hammerhead
-    exec /sbin/busybox-static sh /init.multiboot.mounting.sh
     setprop ro.crypto.fuse_sdcard true
     write /sys/kernel/boot_adsp/boot 1
 
@@ -139,7 +138,7 @@ on boot
     chown system system /sys/class/leds/red/rgb_start
 
 on post-fs-data
-    mkdir /raw-data/media 0770 media_rw media_rw
+    mkdir /data/media 0770 media_rw media_rw
 
     # NFC: create data/nfc for nv storage
     mkdir /data/nfc 0770 nfc nfc
@@ -440,7 +439,7 @@ service qseecomd /system/bin/qseecomd
     group system
 
 # virtual sdcard daemon running as media_rw (1023)
-service sdcard /system/bin/sdcard -u 1023 -g 1023 -l /raw-data/media /mnt/shell/emulated
+service sdcard /system/bin/sdcard -u 1023 -g 1023 -l /data/media /mnt/shell/emulated
     class late_start
 
 service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023 /mnt/media_rw/usbdisk /storage/usbdisk
